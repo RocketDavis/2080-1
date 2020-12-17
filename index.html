@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+
+  <title>CodePen - 2080-1</title>
+  
+  
+  
+  
+<style>
+.flex-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex-direction: column;
+}
+
+#message {
+  background-color:rgb(255,255,0);
+}
+
+#timeRemaining {
+  text-align:center;
+  border-style:groove;
+  font-size:20px;
+  background-color:rgb(255,255,0);
+}
+
+#message {
+  text-align:center;
+  border-style:groove;
+  font-size:20px;
+}
+
+h1 {
+  text-align: center;
+}
+</style>
+
+  
+  
+  
+  
+
+</head>
+
+<body translate="no" >
+  <center>
+<h1>Count Down Timer</h1>
+
+<div class="flex-container">
+<div id="message">...</div>
+<div id="timeRemaining">...</div>
+</div>
+</center>
+  
+  
+      <script id="rendered-js" >
+console.clear();
+console.log("Hello World");
+
+function compute(){
+  const dateNow = new Date();
+  const dateThen = new Date("2020","11","24");
+  const dateDiff = dateThen - dateNow;
+  const dateCount = Math.floor(dateDiff/1000/60/60/24);
+  const hourOffset = Math.floor(dateDiff/1000/60/60);
+  const hours = hourOffset - dateCount*24;
+  const minutes = new Date(dateDiff).getMinutes();
+  const seconds = new Date(dateDiff).getSeconds();
+  let dateString = "Time to Christmas Eve: "
+  dateString = dateString + dateCount; 
+  dateString += " days "
+  dateString += hours
+  dateString += " hours ";
+  dateString += minutes;
+  dateString += " minutes ";
+  dateString += seconds;
+  dateString += " seconds ";
+  document.getElementById("timeRemaining").innerHTML=dateString;
+  
+  if(dateDiff < 0){
+    document.getElementById("message").innerHTML="Time's up";
+    clearInterval(theTimer);
+  }
+}
+
+
+let theTimer = setInterval(compute,1000);
+    </script>
+
+  
+
+</body>
+
+</html>
